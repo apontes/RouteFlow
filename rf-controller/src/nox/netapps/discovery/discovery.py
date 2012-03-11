@@ -41,9 +41,9 @@ import time
 import copy
 
 LLDP_TTL             = 120 # currently ignored
-LLDP_SEND_PERIOD     = .03
-TIMEOUT_CHECK_PERIOD = .3
-LINK_TIMEOUT         = 1.
+LLDP_SEND_PERIOD     = .10 
+TIMEOUT_CHECK_PERIOD = 5.
+LINK_TIMEOUT         = 10.
 
 lg = logging.getLogger('discovery')
 

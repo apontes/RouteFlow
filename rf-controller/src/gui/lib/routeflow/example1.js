@@ -190,7 +190,7 @@ function routeFlowDemo(jsonTopology){
 			    }
                         }
 		});
-		setTimeout(statsTimer, 1000);
+		setTimeout(statsTimer, 500);
 	}
 	
 	function statsTimer() {
@@ -202,7 +202,7 @@ function routeFlowDemo(jsonTopology){
                 	}
 		);
 		rfDemo.printInfo(lastClickedNode);
-		setTimeout(topologyTimer, 1000);
+		setTimeout(topologyTimer, 500);
 	}
 
 	setTimeout(statsTimer, 2000);

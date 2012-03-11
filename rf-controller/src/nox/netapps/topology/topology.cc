@@ -30,6 +30,9 @@
 #include "port-status.hh"
 #include "vlog.hh"
 
+//#include "client/dbclient.h"
+//#include "mongo.h"
+
 using namespace std;
 using namespace vigil;
 using namespace vigil::applications;
@@ -427,7 +430,7 @@ Topology::printNetworkLinkMap(const Link_event& le) {
 		nlm_iter++;
         }
 
-	ofstream file ("../../src/gui/lib/routeflow/json.js");
+	ofstream file ("/home/routeflow/RouteFlow-New-Architecture/rf-controller/src/gui/lib/routeflow/json.js");
 	if (file.is_open())
 	{
 		file << "{ \"nodes\": [\n";
@@ -537,8 +540,10 @@ Topology::printNetworkLinkMap(const Link_event& le) {
                 	file << "\t\t\t\"$dim\": 20,\n";
 			int latitude = rand() % 10 - 23;
 			int longitude = rand() % 10 - 46;
-                	file << "\t\t\t\"latitude\": -23.538609,\n";
-	                file << "\t\t\t\"longitude\": -46.682607\n";
+                	//file << "\t\t\t\"latitude\": -23.538609,\n";
+	                //file << "\t\t\t\"longitude\": -46.682607\n";
+			file << "\t\t\t\"latitude\": " << latitude << ",\n";
+                        file << "\t\t\t\"longitude\": " << longitude << "\n";
         	        file << "\t\t}\n";
                 	file << "\t}";
 			nlm_iter++;

@@ -2,6 +2,9 @@ function gmapsTopology_start(){
     
     selectTab('viewTopology');
     deSelectTab('viewGraphId');
+    deSelectTab('viewRfEvents');
+    deSelectTab('viewTable');
+    deSelectTab('viewSNMP');
 
     document.getElementById("selectedTab").value = "map";
 
