@@ -197,12 +197,12 @@
 				"flow": "0",
 				"ofp_match": "",
 				"ofp_actions": "OUTPUT: port 65533; ",
-				"packet_count": "57243",
-				"byte_count": "4463506"
+				"packet_count": "64159",
+				"byte_count": "5002954"
 			}
 			],
 			"$ofp_desc_stats":["Nicira Networks, Inc.", "rfovs", "1.1.0", "None", "None"],
-			"$ofp_aggr_stats":["57271", "4465690", "1"],
+			"$ofp_aggr_stats":["64201", "5006230", "1"],
 			"$ofp_table_stats":[["0", "classifier", "1", "0"]]
 		}
 	}
