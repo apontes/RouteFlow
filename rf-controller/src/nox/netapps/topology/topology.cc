@@ -43,6 +43,9 @@ namespace applications {
 
 static Vlog_module lg("topology");
 
+//std::list<int> latitudeList;
+hash_map<datapathid, int> latitudeList;
+hash_map<datapathid, int> longitudeList;
 
 Topology::Topology(const Context* c,
                    const json_object*)
@@ -156,6 +159,14 @@ Topology::handle_datapath_join(const Event& e)
 
     nlm_iter->second.active = true;
     nlm_iter->second.ports = dj.ports;
+
+    int latitude = rand() % 10 - 26;
+    int longitude = rand() % 10 - 50;
+    //int latitude = 10;
+    if(latitudeList.find(dj.datapath_id) == latitudeList.end()) {
+        latitudeList[dj.datapath_id] = latitude;
+	longitudeList[dj.datapath_id] = longitude;
+    }
     return CONTINUE;
 }
 
@@ -178,6 +189,7 @@ Topology::handle_datapath_leave(const Event& e)
         VLOG_ERR(lg, "Received datapath_leave for non-existing dp %"PRIx64".",
                  dl.datapath_id.as_host());
     }
+    //latitudeList.erase(dl.datapath_id);
     return CONTINUE;
 }
 
@@ -430,6 +442,12 @@ Topology::printNetworkLinkMap(const Link_event& le) {
 		nlm_iter++;
         }
 
+	
+	hash_map<datapathid, int>::iterator it;
+	for(it=latitudeList.begin(); it!=latitudeList.end(); ++it) {
+		std::cout << "datapath: " << it->first.string() << "; latitude :" << it->second << "\n";
+	}
+
 	ofstream file ("/home/routeflow/RouteFlow-New-Architecture/rf-controller/src/gui/lib/routeflow/json.js");
 	if (file.is_open())
 	{
@@ -452,8 +470,8 @@ Topology::printNetworkLinkMap(const Link_event& le) {
                 file << "\t\t\t\"$dim\": 20,\n";
                 file << "\t\t\t\"$x\": -50,\n";
                 file << "\t\t\t\"$y\": -170,\n";
-                file << "\t\t\t\"latitude\": -20.950884,\n";
-                file << "\t\t\t\"longitude\": -42.775578\n";
+                file << "\t\t\t\"latitude\": -21.950884,\n";
+                file << "\t\t\t\"longitude\": -43.775578\n";
                 file << "\t\t}\n";
                 file << "\t},\n";
 		file << "\t{\n";
@@ -469,8 +487,8 @@ Topology::printNetworkLinkMap(const Link_event& le) {
                 file << "\t\t\t\"$dim\": 25,\n";
                 file << "\t\t\t\"$x\": 100,\n";
                 file << "\t\t\t\"$y\": -170,\n";
-                file << "\t\t\t\"latitude\": -21.002466,\n";
-                file << "\t\t\t\"longitude\": -45.062749\n";
+                file << "\t\t\t\"latitude\": -22.002466,\n";
+                file << "\t\t\t\"longitude\": -46.062749\n";
                 file << "\t\t}\n";
                 file << "\t}";
 
@@ -538,12 +556,12 @@ Topology::printNetworkLinkMap(const Link_event& le) {
 	                file << "\t\t\t\"$type\": \"of-switch\",\n";
         	        file << "\t\t\t\"timer\": " << time(NULL) <<",\n";
                 	file << "\t\t\t\"$dim\": 20,\n";
-			int latitude = rand() % 10 - 23;
-			int longitude = rand() % 10 - 46;
+			//int latitude = rand() % 10 - 23;
+			//int longitude = rand() % 10 - 48;
                 	//file << "\t\t\t\"latitude\": -23.538609,\n";
 	                //file << "\t\t\t\"longitude\": -46.682607\n";
-			file << "\t\t\t\"latitude\": " << latitude << ",\n";
-                        file << "\t\t\t\"longitude\": " << longitude << "\n";
+			file << "\t\t\t\"latitude\": " << latitudeList[nlm_iter->first] << ",\n";
+                        file << "\t\t\t\"longitude\": " << longitudeList[nlm_iter->first] << "\n";
         	        file << "\t\t}\n";
                 	file << "\t}";
 			nlm_iter++;

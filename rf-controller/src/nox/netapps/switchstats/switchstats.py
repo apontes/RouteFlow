@@ -320,19 +320,25 @@ class switchstats(Component):
                 elif k.has_key('nw_dst'):
 			if k['nw_proto'] == 17:
 	                	match = "udp"
-			match = match + ", nw_dst: " + str(ipaddr(k['nw_dst']))
+			match = match + "; nw_dst: " + str(ipaddr(k['nw_dst']))
 
                 elif k.has_key('nw_dst_mask'):
         	        match = "nw_dst_mask: " + str(ipaddr(k['nw_dst_mask']))
 
 		elif k.has_key('nw_proto'):
-                        match = "nw_proto: " 
+                        match = "" 
 			if k['nw_proto'] == 89:
-				match = match + "OSPF" 
-			#match = match + "; tp_src: " + str(k['tp_src']) + "; tp_dst: " + str(k['tp_dst'])
-			match = match + "; tp_src: tp_src; tp_dst: tp_dst"
-
-		#r.hset('dp_flow_stats:' + str(dpid) + ':match', i, match)
+				match = match + "ospf"
+				match = match + "; tp_src: " + str(k['tp_src']) + "; tp_dst: " + str(k['tp_dst'])
+			if k['nw_proto'] == 6:
+                                match = match + "tcp"
+				match = match + "; tp_dst: " + str(k['tp_dst'])
+			if k['nw_proto'] == 1:
+                                match = match + "icmp"
+		elif k.has_key('dl_type'):
+			if k['dl_type'] == 2054:
+				match = "arp"
+		#match = str(k) + match
 
 		cont = 0
 		actions = []

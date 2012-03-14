@@ -8723,33 +8723,7 @@
 				node.pos.setc(oldGraph.getNode(node.id).getPos().x, oldGraph.getNode(node.id).getPos().y);
 			});
 
-			/*this.computeIncremental({
-				//iter: 20,
-				property: 'start',
-				/*onStep: function() {
-					aux = 0;
-					this.graph.eachNode(function(node){
-                                                node.pos.setc(nodesPosition[aux][0], nodesPosition[aux++][1]);
-                                        });
-					//Log.write(perc + '% loaded...');
-				},
-				onAfterCompute: function() {
-					aux = 0;
-                                        auxGraph.eachNode(function(node){
-                                                node.pos.setc(nodesPosition[aux][0], nodesPosition[aux++][1]);
-                                        });
-				},
-				onComplete: function() {
-					//auxGraph.eachNode(function(node){
-						//node.pos.setc(node.getPos().x, node.getPos().y);
-					//});
-					that.animate({
-						//modes: ['linear'],
-						//transition: 'nothing',
-						//duration: 1000
-					});
-				}
-			});*/ this.plot();
+			this.plot();
 			that.busy = false;
 			if(typeof lastClickedNode!='undefined')			
 				lastClickedNode = this.graph.getNode(lastClickedNode.id);
