@@ -13,7 +13,7 @@
 		],
 		"data": {
 			"$type": "rf-server",
-			"timer": 1331412354,
+			"timer": 1331752976,
 			"$dim": 20,
 			"$x": -50,
 			"$y": -170,
@@ -30,7 +30,7 @@
 		},
 		"data": {
 			"$type": "controller",
-			"timer": 1331412354,
+			"timer": 1331752976,
 			"$dim": 25,
 			"$x": 100,
 			"$y": -170,
@@ -73,10 +73,10 @@
 		],
 		"data": {
 			"$type": "of-switch",
-			"timer": 1331412354,
+			"timer": 1331752976,
 			"$dim": 20,
-			"latitude": -15,
-			"longitude": -41
+			"latitude": -20,
+			"longitude": -44
 		}
 	},
 	{
@@ -107,10 +107,10 @@
 		],
 		"data": {
 			"$type": "of-switch",
-			"timer": 1331412354,
+			"timer": 1331752976,
 			"$dim": 20,
-			"latitude": -23,
-			"longitude": -40
+			"latitude": -19,
+			"longitude": -51
 		}
 	},
 	{
@@ -141,10 +141,10 @@
 		],
 		"data": {
 			"$type": "of-switch",
-			"timer": 1331412354,
+			"timer": 1331752976,
 			"$dim": 20,
-			"latitude": -19,
-			"longitude": -40
+			"latitude": -17,
+			"longitude": -48
 		}
 	},
 	{
@@ -182,9 +182,9 @@
 		],
 		"data": {
 			"$type": "of-switch",
-			"timer": 1331412354,
+			"timer": 1331752976,
 			"$dim": 20,
-			"latitude": -21,
-			"longitude": -41
+			"latitude": -20,
+			"longitude": -49
 		}
 	}]}
